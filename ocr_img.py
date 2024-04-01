@@ -1,5 +1,6 @@
 import cv2, pytesseract, os
 import numpy as np
+import img_editor as edit
 
 
 ## Using camera to capture picture
@@ -60,17 +61,21 @@ try:
 except:
     pass
 
-## Processing the image
-print("processing the image..\n")
+if pictures_list==[]:
+    print("script end")
+else:
+    ## Processing the image
+    print("processing the image..\n")
 
-img = cv2.imread(pictures_list[0])
+    img = cv2.imread(pictures_list[0])
 
-# get grayscale image
-def get_grayscale(image):
-    return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # get grayscale image
+    def get_grayscale(image):
+        return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-get_grayscale(img)
+    get_grayscale(img)
 
-# Adding custom options
-custom_config = r'--oem 3 --psm 6'
-print(pytesseract.image_to_string(img,config=custom_config))
+    # Adding custom options
+    custom_config = r'--oem 3 --psm 6'
+    print(pytesseract.image_to_string(img,config=custom_config))
+
